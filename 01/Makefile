@@ -6,14 +6,14 @@
 #    By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/24 12:02:46 by jlacerda          #+#    #+#              #
-#    Updated: 2025/06/27 00:07:16 by jlacerda         ###   ########.fr        #
+#    Updated: 2025/07/03 22:07:22 by jlacerda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 NAME = megaphone
 
-SRCS = PhoneBook.cpp Contact.cpp main.cpp
+SRCS = PhoneBook.cpp Contact.cpp main.cpp utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -6,12 +6,15 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 06:32:27 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/06/27 00:07:27 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:10:04 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include "utils.hpp"
 #include <iostream>
+
+#define EMPTY_STRING ""
 
 Contact::Contact() {}
 
@@ -57,20 +60,54 @@ void Contact::setDarkestSecret(const std::string &darkestSecret) {
 	this->darkestSecret = darkestSecret;
 }
 
-
 bool Contact::isEmpty() const {
 	return firstName.empty() && lastName.empty() && nickname.empty()
 		&& phoneNumber.empty() && darkestSecret.empty();
 }
 
-void Contact::printContactDetails() const {
+void Contact::printDetails() const {
 	if (isEmpty()) {
 		std::cout << "Contact is empty." << std::endl;
 		return;
 	}
-	std::cout << "First Name: " << getFirstName() << std::endl;
-	std::cout << "Last Name: " << getLastName() << std::endl;
-	std::cout << "Nickname: " << getNickname() << std::endl;
-	std::cout << "Phone Number: " << getPhoneNumber() << std::endl;
-	std::cout << "Darkest Secret: " << getDarkestSecret() << std::endl;
+	std::cout << std::endl
+		<< "First Name: " << getFirstName() << std::endl
+		<< "Last Name: " << getLastName() << std::endl
+		<< "Nickname: " << getNickname() << std::endl
+		<< "Phone Number: " << getPhoneNumber() << std::endl
+		<< "Darkest Secret: " << getDarkestSecret() << std::endl;
+}
+
+std::string Contact::readField(const std::string &fieldName) {
+	std::string input = EMPTY_STRING;
+	std::cout << "Enter " << fieldName << ": ";
+	std::getline(std::cin, input);
+	while (trim(input).empty()) {
+		std::cout << fieldName << " cannot be empty. "
+			<< std::endl << "Please try again: ";
+		std::getline(std::cin, input);
+		if (std::cin.eof()) continue;
+	}
+	return input;
+}
+void Contact::readFields() {
+	std::string input;
+
+	std::cout << std::endl;
+	input = readField("first name");
+	setFirstName(input);
+	input = readField("last name");
+	setLastName(input);
+	input = readField("nickname");
+	setNickname(input);
+	input = readField("phone number");
+	while (!isNumeric(input)) {
+		std::cout << "Phone number must be numeric. "
+			<< std::endl << "Please try again: ";
+		std::getline(std::cin, input);
+		if (std::cin.eof()) continue;
+	}
+	setPhoneNumber(input);
+	input = readField("darkest secret");
+	setDarkestSecret(input);
 }

@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 06:32:27 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/06/26 22:36:40 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:11:45 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Contact
 		std::string nickname;
 		std::string phoneNumber;
 		std::string darkestSecret;
+		std::string readField(const std::string &fieldName);
 
 	public:
 		Contact();
@@ -54,7 +55,19 @@ class Contact
 		/**
 		 * @brief Prints the contact information.
 		 */
-		void printContactDetails() const;
+		void printDetails() const;
+		/**
+		 * @brief Reads fields from user input.
+		 * This method prompts the user to enter
+		 * the contact details and stores them in the contact object.
+		 * It ensures that the input is valid and not empty.
+		 * @note This method is interactive and requires user input.
+		 * @details It reads the first name, last name, nickname,
+		 * phone number, and darkest secret from the user.
+		 * It validates the phone number to ensure it contains only numeric characters.
+		 * If the input is invalid, it prompts the user to re-enter the information.
+		 */
+		void readFields();
 };
 
 #endif
