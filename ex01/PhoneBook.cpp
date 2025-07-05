@@ -6,11 +6,12 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 06:32:27 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/04 00:18:14 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:30:10 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "styles.hpp"
 #include <iostream>
 #include <iomanip>
 
@@ -37,15 +38,33 @@ void PhoneBook::displayContacts() const {
 		? contactCount : MAX_CONTACTS;
 
 	if (contactCount == 0) return;
-	std::cout << std::endl
-		<< "|" << std::setw(WIDTH_VIEW_SIZE) << "Contact No"
-		<< "|" << std::setw(WIDTH_VIEW_SIZE) << "First Name"
-		<< "|" << std::setw(WIDTH_VIEW_SIZE) << "Last Name"
-		<< "|" << std::setw(WIDTH_VIEW_SIZE) << "Nickname" 
-		<< "|" << std::endl;
+
+	std::cout 
+		<< std::endl
+		<< "┌───────────────────────────────────────────┐"
+		<< RESET << std::endl
+		<< "│             " 
+		<< ICON_CONTACT << "Contact List " << ICON_CONTACT 
+		<< "           │" << RESET << std::endl
+		<< "├───────────────────────────────────────────┤"
+		<< RESET << std::endl
+		<< "│" << RESET
+		<< BOLD << YELLOW << std::setw(WIDTH_VIEW_SIZE) << "Contact No" 
+		<< RESET << "│" << RESET
+		<< BOLD << YELLOW << std::setw(WIDTH_VIEW_SIZE) << "First Name"
+		<< RESET << "│" << RESET
+		<< BOLD << YELLOW << std::setw(WIDTH_VIEW_SIZE) << "Last Name"
+		<< RESET << "│" << RESET
+		<< BOLD << YELLOW << std::setw(WIDTH_VIEW_SIZE) << "Nickname"
+		<< RESET "│" << RESET << std::endl
+		<< "├───────────────────────────────────────────┤"
+		<< RESET << std::endl;
+
 	for (int i = 0; i < sizeList; i++) {
 		displayContact(contacts[i], i);
 	}
+
+	std::cout << "└───────────────────────────────────────────┘" << std::endl;
 }
 
 void PhoneBook::displayContact(const Contact &contact, int index) const {

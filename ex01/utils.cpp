@@ -6,11 +6,12 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 06:32:27 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/04 00:15:42 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:38:00 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.hpp"
+#include "styles.hpp"
 
 #define SPACE_CHAR ' '
 #define EMPTY_STRING ""
@@ -41,12 +42,33 @@ std::string trim(const std::string &str) {
  * it returns true.
  */
 bool isNumeric(const std::string& str) {
-    if (str.empty()) return false;
-    
-    for (size_t i = 0; i < str.length(); i++) {
-        if (!std::isdigit(str[i])) {
-            return false;
-        }
-    }
-    return true;
+	if (str.empty()) return false;
+	
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!std::isdigit(str[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+/**
+ * @brief Checks if the end of file (EOF) has been detected.
+ * 
+ * This function checks if the standard input stream has reached
+ * the end of file. If EOF is detected, it clears the input stream
+ * and prints a warning message.
+ * 
+ * @return true if EOF is detected, false otherwise.
+ */
+bool endOfFileDetected(void)
+{
+	if (std::cin.eof()) {
+		std::cout
+			<< std::endl << YELLOW << ICON_WARNING 
+			<< "EOF detected. Exiting of interaction" << RESET << std::endl;
+		std::cin.clear();
+		return true;
+	}
+	return false;
 }
