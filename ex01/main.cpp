@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 06:32:27 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/05 18:41:02 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:47:14 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ PhoneBook g_phoneBook;
 
 enum Command { ADD, EXIT, SEARCH, INVALID };
 
+/**
+ * @brief Gets the command based on user input.
+ * This function checks the input string and returns the corresponding
+ * Command enum value. If the input does not match any known command,
+ * it returns INVALID.
+ * @param input The command input by the user.
+ * @return The corresponding Command enum value.
+ */
 static Command getCommand(const std::string &input)
 {
 	if (input == "ADD")
@@ -32,16 +40,34 @@ static Command getCommand(const std::string &input)
 	return INVALID;
 }
 
-static void addContact()
+/**
+ * @brief Prints a welcome message for the PhoneBook application.
+ * This function displays a welcome message with the application name
+ * and a brief description of the available commands.
+ * It uses ANSI escape codes for styling the output.
+ */
+static void printWelcomeMessage()
 {
-	Contact contact;
-	contact.readFields();
-	g_phoneBook.addContact(contact);
-	std::cout << GREEN << ICON_SUCCESS 
-		<< "Contact added successfully!" << RESET << std::endl;
+	std::cout
+		<< std::endl
+		<< BOLD << CYAN << ICON_PHONE
+		<< "PhoneBook Application " << ICON_PHONE << RESET << std::endl
+		<< BOLD << std::endl
+		<< WHITE << ICON_MENU << " You can "
+		<< GREEN << ICON_ADD << "ADD contacts "
+		<< BLUE << ICON_SEARCH << "SEARCH for them "
+		<< RED << ICON_EXIT << "EXIT the application"
+		<< RESET << std::endl;
 }
 
-static void invalidCommand(const std::string &input)
+/**
+ * @brief Prints an error message for an invalid command.
+ * This function displays a message indicating that the command
+ * entered by the user is invalid.
+ * It also provides a list of valid commands that the user can use.
+ * @param input The invalid command input by the user.
+ */
+static void printInvalidCommandMessage(const std::string &input)
 {
 	std::cout
 		<< RED << std::endl << ICON_ERROR << "Invalid command '"
@@ -53,6 +79,33 @@ static void invalidCommand(const std::string &input)
 		<< RESET << std::endl;
 }
 
+/**
+ * @brief Adds a new contact to the phone book.
+ * This function prompts the user to enter contact details,
+ * reads the input, and adds the contact to the phone book.
+ * It displays a success message upon successful addition.
+ */
+static void addContact()
+{
+	Contact contact;
+	contact.readFields();
+	g_phoneBook.addContact(contact);
+	std::cout << GREEN << ICON_SUCCESS 
+		<< "Contact added successfully!" << RESET << std::endl;
+}
+
+/**
+ * @brief Searches for contacts in the phone book.
+ * This function prompts the user to enter a contact number
+ * to view its details.
+ * It validates the input and displays the contact details
+ * if the contact exists.
+ * If no contacts are available, it informs the user to add a contact first.
+ * If the input is invalid, it prompts the user to re-enter a valid contact number.
+ * @note The contact number is 1-based, meaning the first contact is number 1.
+ * If the user enters an invalid number, it will prompt them to enter a number
+ * between 1 and the total number of contacts available.
+ */
 static void searchContacts()
 {
 	std::string input;
@@ -108,20 +161,13 @@ static void searchContacts()
 	contact.printDetails();
 }
 
-static void printWelcomeMessage()
-{
-	std::cout
-		<< std::endl
-		<< BOLD << CYAN << ICON_PHONE
-		<< "PhoneBook Application " << ICON_PHONE << RESET << std::endl
-		<< BOLD << std::endl
-		<< WHITE << ICON_MENU << " You can "
-		<< GREEN << ICON_ADD << "ADD contacts "
-		<< BLUE << ICON_SEARCH << "SEARCH for them "
-		<< RED << ICON_EXIT << "EXIT the application"
-		<< RESET << std::endl;
-}
-
+/**
+ * @brief Executes the main program loop.
+ * This function continuously prompts the user for commands
+ * until the user decides to exit. It handles the commands
+ * to add contacts, search for contacts, or exit the program.
+ * It also handles invalid commands and provides feedback to the user.
+ */
 static void execute_program(void)
 {
 	std::string input;
@@ -151,7 +197,7 @@ static void execute_program(void)
 				<< RESET << std::endl << std::endl;
 			return;
 		default:
-			invalidCommand(input);
+			printInvalidCommandMessage(input);
 		}
 	}
 }

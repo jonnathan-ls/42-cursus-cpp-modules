@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 06:32:27 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/04 00:11:45 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:44:09 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class Contact
 		std::string readField(const std::string &fieldName);
 
 	public:
-		Contact();
-		~Contact();
+		Contact(void);
+		~Contact(void);
 		void setFirstName(const std::string &firstName);
 		void setLastName(const std::string &lastName);
 		void setNickname(const std::string &nickname);
