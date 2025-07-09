@@ -6,7 +6,7 @@
 #    By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/24 12:02:46 by jlacerda          #+#    #+#              #
-#    Updated: 2025/07/05 16:23:43 by jlacerda         ###   ########.fr        #
+#    Updated: 2025/07/09 15:02:45 by jlacerda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,41 +73,35 @@ header:
 	fi
 
 # **************************************************************************** #
-# Define the progress bar and verbose output functions
+# Detect terminal width and adjust behavior
+# **************************************************************************** #
+TERM_WIDTH := $(shell tput cols 2>/dev/null || echo 80)
+SAFE_WIDTH := $(shell echo $$(($(TERM_WIDTH) - 10)))
+PROGRESS_WIDTH := $(shell echo $$(($(SAFE_WIDTH) > 50 ? 30 : $(SAFE_WIDTH) - 20)))
+
+# **************************************************************************** #
+# Define the progress bar and verbose output functions - CLEAN & SIMPLE
 # **************************************************************************** #
 TOTAL_FILES := $(words $(SRCS))
-BAR_LENGTH = 27
 COMPILED_COUNT = 0
 VERBOSE ?= 0
-TRUNCATE_FOLDER = '' # 's|sources/||'
-
-FILLED_FN = $(shell echo $$(($(COMPILED_COUNT)*$(BAR_LENGTH)/$(TOTAL_FILES))))
-
-CLEAR_LINE = printf "\033[2A\r"; printf "%60s\r";
-COMPILE_TITLE = printf "$(BLUE)$(BOLD)🏗️   Building $(NAME) $(RESET)\n";
 
 define show_progress
-	@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT)+1))))
-	@$(eval SHORT_PATH=$(shell echo $(1) | sed ${TRUNCATE_FOLDER}))
-	@if [ $(VERBOSE) -eq 1 ]; then \
-		echo "$(CYAN)$(BOLD)📄  Compiling \
-		$(RESET)$(CYAN)$(SHORT_PATH)$(RESET) \
-		($(COMPILED_COUNT)/$(TOTAL_FILES))"; \
-	else \
-		$(eval FILLED=$(FILLED_FN)) \
-		$(eval PROGRESS_BAR=$(shell printf '▓%.0s' $$(seq 1 $(FILLED)))) \
-		[ $(COMPILED_COUNT) -eq 1 ] && { ${COMPILE_TITLE} } || true; \
-		[ $(COMPILED_COUNT) -gt 1 ] && { ${CLEAR_LINE} } || true; \
-		printf "$(CYAN)$(BOLD)📄  Processing $(RESET)($(COMPILED_COUNT)/$(TOTAL_FILES)) \
-		$(CYAN)$(SHORT_PATH)$(RESET)%*s\r\n" $$(( 60 - $${#SHORT_PATH} )) " "; \
-		printf "$(YELLOW)$(BOLD)🔄  $(RESET)$(YELLOW)%s$(RESET) \n" "$(PROGRESS_BAR)"; \
-		[ $(COMPILED_COUNT) -eq $(TOTAL_FILES) ] && { \
-			sleep 0.25; \
-			printf "\033[3A\r%60s\r" ""; \
-			printf "$(BLUE)$(BOLD)🏗️   Building $(NAME) $(GREEN)$(BOLD)✓ Completed!$(RESET)\n%60s\r" ""; \
-			printf "$(CYAN)$(BOLD)📄  Processing $(RESET)($(COMPILED_COUNT)/$(TOTAL_FILES)) \
-			$(CYAN)$(SHORT_PATH)$(RESET)%*s\n" $$(( 60 - $${#SHORT_PATH} )) " "; \
-			printf "$(YELLOW)$(BOLD)🔄  $(RESET)$(YELLOW)%s$(RESET) \n" "$(PROGRESS_BAR)"; \
-		} || true; \
-	fi
+    @$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT)+1))))
+    @$(eval SHORT_PATH=$(shell echo $(1) | sed 's|^.*/||'))
+    @$(eval PERCENT=$(shell echo $$(($(COMPILED_COUNT)*100/$(TOTAL_FILES)))))
+    @$(eval BAR_SIZE=20)
+    @$(eval BARS=$(shell echo $$(($(COMPILED_COUNT)*$(BAR_SIZE)/$(TOTAL_FILES)))))
+    @$(eval REMAINING=$(shell echo $$(($(BAR_SIZE) - $(BARS)))))
+    @$(eval PROGRESS=$(shell printf '█%.0s' $$(seq 1 $(BARS))))
+    @$(eval EMPTY=$(shell printf '░%.0s' $$(seq 1 $(REMAINING))))
+
+    @if [ $(VERBOSE) -eq 1 ]; then \
+        echo "$(CYAN)$(BOLD)📄  Compiling $(RESET)$(CYAN)$(SHORT_PATH)$(RESET) ($(COMPILED_COUNT)/$(TOTAL_FILES))"; \
+    else \
+        printf "\r\033[K$(YELLOW)$(BOLD)🔄  $(RESET)$(GREEN)$(PROGRESS)$(WHITE)$(EMPTY)$(RESET) $(PERCENT)%% $(CYAN)$(SHORT_PATH)$(RESET)"; \
+        if [ $(COMPILED_COUNT) -eq $(TOTAL_FILES) ]; then \
+            printf "\n$(GREEN)$(BOLD)✅  Compilation completed!$(RESET)\n"; \
+        fi; \
+    fi
 endef
