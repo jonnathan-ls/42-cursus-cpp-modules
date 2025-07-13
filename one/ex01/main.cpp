@@ -15,6 +15,7 @@
 #include "style.hpp"
 
 void testBasicZombieHorde();
+void testPerformanceZombieHorde();
 
 void showMenu() {
 	clearScreen();
@@ -23,9 +24,9 @@ void showMenu() {
 		<< RESET << std::endl << std::endl;
 	
 	std::cout << GREEN << "1️⃣  Basic Test: Zombie Horde" << RESET << std::endl;
-	std::cout << GREEN << "2️⃣  Advanced Test: Zombie Horde with Random Names" << RESET << std::endl;
-	std::cout << GREEN << "3️⃣  Edge Case: Zombie Horde with Zero Size" << RESET << std::endl;
-	std::cout << GREEN << "4️⃣  Stress Test: Large Zombie Horde" << RESET << std::endl;
+	std::cout << GREEN << "2️⃣  Performance Test: Single vs Multiple Allocations" 
+		<< RESET << std::endl;
+	std::cout << GREEN << "3️⃣  Exit the program" << RESET << std::endl;
 
 	std::cout << BOLD << WHITE << "\n📝 Choose an option: " << RESET;
 }
@@ -38,7 +39,7 @@ int main() {
 		std::getline(std::cin, choice);
 		if (endOfFileDetected()) break;
 		
-		if (choice == "5") {
+		if (choice == "3") {
 			clearScreen();
 			std::cout << BOLD << GREEN 
 				<< "👋 Thank you for using Zombie Memory Tester!" 
@@ -55,6 +56,7 @@ int main() {
 		clearScreen();
 		switch (choice[0]) {
 			case '1': testBasicZombieHorde(); break;
+			case '2': testPerformanceZombieHorde(); break;
 			default:
 				std::cout << RED << "❌ Invalid option!"<< RESET << std::endl;
 				break;

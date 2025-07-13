@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include "Zombie.hpp"
+#include  "utils.hpp"
 
 /**
  * @brief Creates a Zombie on the stack with the given name and announces itself.
@@ -19,10 +20,11 @@
  * @return A Zombie horde object that is dynamically allocated on the heap.
  * The object apoint for the first Zombie in the horde.
  */
-Zombie* zombieHorde( int N, std::string name ) {
+Zombie* zombieHorde(int N, std::string name) {
 	Zombie* horde = new Zombie[N];
 	for (int i = 0; i < N; i++) {
-		horde[i].setName(name);
+		std::string zombieName = name + "-" + intToString(i);
+		horde[i].setName(zombieName);
 	}
 	return horde;
 }

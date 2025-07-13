@@ -13,9 +13,9 @@
 #include "utils.hpp"
 
 std::string intToString(int value) {
-	std::stringstream ss;
-	ss << value;
-	return ss.str();
+	std::ostringstream oss;
+	oss << value;
+	return oss.str();
 }
 
 void clearScreen(void) {

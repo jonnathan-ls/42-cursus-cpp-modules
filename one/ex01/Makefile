@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = c++
-NAME = zombie
+NAME = zombie_horde
 
 SRCS = Zombie.cpp main.cpp zombieHorde.cpp \
 	cases.cpp utils.cpp

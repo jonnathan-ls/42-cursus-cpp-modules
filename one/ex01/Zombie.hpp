@@ -23,7 +23,7 @@ class Zombie {
 		Zombie();
 		~Zombie();
 		void announce() const;
-		void setName(const std::string& newName);
+		void setName(const std::string &newName);
 };
 
 #endif
