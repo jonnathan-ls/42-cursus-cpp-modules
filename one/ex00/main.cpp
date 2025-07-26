@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/12 17:34:58 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/26 14:34:00 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int main() {
 			continue;
 		}
 		
-		clearScreen();
 		switch (choice[0]) {
 			case '1': testBasicStackVsHeap(); break;
 			case '2': testScope(); break;

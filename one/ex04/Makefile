@@ -6,7 +6,7 @@
 #    By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/24 12:02:46 by jlacerda          #+#    #+#              #
-#    Updated: 2025/07/12 18:25:30 by jlacerda         ###   ########.fr        #
+#    Updated: 2025/07/26 14:44:56 by jlacerda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ header:
 	@if [ ! -f .header_lock ]; then \
 		touch .header_lock; \
 		echo; \
-		echo "$(MAGENTA)$(BOLD)🔥  CPP Module 01 Exercise 00$(RESET)"; \
+		echo "$(MAGENTA)$(BOLD)🔥  CPP Module 01 Exercise 04$(RESET)"; \
 		echo "$(GREEN)$(BOLD)👥  Autor:$(RESET) $(YELLOW)jonnathan-ls$(RESET)"; \
 		echo ;\
 	fi

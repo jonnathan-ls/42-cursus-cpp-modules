@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/12 18:24:08 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/26 14:19:33 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int main() {
 			continue;
 		}
 		
-		clearScreen();
 		switch (choice[0]) {
 			case '1': testBasicZombieHorde(); break;
 			case '2': testPerformanceZombieHorde(); break;

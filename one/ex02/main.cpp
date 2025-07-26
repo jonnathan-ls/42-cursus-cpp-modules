@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/12 18:24:08 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/26 14:38:12 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main() {
 	std::string* stringPTR = &str;
 	std::string& stringREF = str;
 
-	std::cout << BOLD << GREEN << INFO_EMOJI 
+	std::cout << std::endl << BOLD << GREEN << INFO_EMOJI 
 		<< "This program demonstrates pointers and references in C++." 
 		<< RESET << std::endl << std::endl;
 	std::cout << BOX_EMOJI << "Address of str:      " << &str << std::endl;
@@ -36,7 +36,7 @@ int main() {
 
 	std::cout<< std::endl;
 	
-	std::cout << VALUE_EMOJI << "Value of str   " << str << std::endl;
+	std::cout << VALUE_EMOJI << "Value of str:  " << str << std::endl;
 	std::cout << VALUE_EMOJI << "Value via PTR: " << *stringPTR << std::endl;
 	std::cout << VALUE_EMOJI << "Value via REF: " << stringREF << std::endl;
 
@@ -54,6 +54,6 @@ int main() {
 	std::cout << "- Use references for simpler syntax and when you know the reference will always be valid." << std::endl;
 	std::cout << BOLD << RED
 		<< "\n❗ Always ensure pointers are valid before dereferencing to avoid undefined behavior!" 
-		<< RESET << std::endl;
+		<< RESET << std::endl << std::endl;
 	return 0;
 }
