@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/14 23:35:03 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/07/26 15:17:33 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 #define INFO_ICON "ℹ️  "
 #define DEBUG_ICON "🐞 "
 #define ERROR_ICON "❌ "
-#define UNKNOWN_ICON "❓ "
 
 /**
  * Typedef for member function pointers in the Harl class.
@@ -77,7 +76,7 @@ void Harl::filterMessagesByLevel(LogLevel level) {
 		default:
 			std::cout << ORANGE
 				<< "[ Probably complaining about insignificant problems ]"
-				<< RESET << std::endl << std::endl;
+				<< RESET << std::endl;
 			break;
 	}
 }
@@ -99,23 +98,14 @@ void Harl::complain(const std::string level) {
 		&Harl::info, &Harl::error, &Harl::debug, &Harl::warning
 	};
 
-	if (trim(level).empty()) {
-		std::cout << UNKNOWN_ICON << ORANGE
-			<< "[UNKNOWN] No level provided." << RESET << std::endl;
-		return;
-	}
-
 	for (int i = 0; i < LEVELS_SIZE; i++) {
 		if (level == HARL_LEVELS[i]) {
 			(this->*functions[i])();
+			std::cout << std::endl;
 			return;
 		}
 	}
 	
-	std::cout << UNKNOWN_ICON << ORANGE
-		<< "[UNKNOWN]" << RESET << std::endl
-		<< "I don't know how to respond to that level: "
-		<< level << std::endl << std::endl;
 }
 
 void Harl::debug(void) {
@@ -124,7 +114,7 @@ void Harl::debug(void) {
 		<< "I love having extra bacon for my "
 		<< "7XL-double-cheese-triple-pickle-special-ketchup burger."
 		<< std::endl
-		<< "I really do!" << std::endl << std::endl;
+		<< "I really do!" << std::endl;
 }
 
 void Harl::info(void) {
@@ -133,8 +123,7 @@ void Harl::info(void) {
 		<< "I cannot believe adding extra bacon costs more money."
 		<< std::endl
 		<< "You didn't put enough bacon in my burger! "
-		<< "If you did, I wouldn't be asking for more!"
-		<< std::endl << std::endl;
+		<< "If you did, I wouldn't be asking for more!" << std::endl;
 }
 
 void Harl::warning(void) {
@@ -143,14 +132,12 @@ void Harl::warning(void) {
 		<< "I think I deserve to have some extra bacon for free."
 		<< std::endl
 		<< "I've been coming for years, whereas you started "
-		<< "working here just last month."
-		<< std::endl << std::endl;
+		<< "working here just last month." << std::endl;
 }
 
 void Harl::error(void) {
 	std::cout << ERROR_ICON << RED
 		<< "[ERROR]" << RESET << std::endl << std::endl
 		<< "This is unacceptable! "
-		<< "I want to speak to the manager now."
-		<< std::endl << std::endl;
+		<< "I want to speak to the manager now." << std::endl;
 }
