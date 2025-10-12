@@ -67,7 +67,7 @@ header:
 	@if [ ! -f .header_lock ]; then \
 		touch .header_lock; \
 		echo; \
-		echo "$(MAGENTA)$(BOLD)🔥  CPP Module 02 Exercise 00$(RESET)"; \
+		echo "$(MAGENTA)$(BOLD)🔥  CPP Module 02 Exercise 01$(RESET)"; \
 		echo "$(GREEN)$(BOLD)👥  Autor:$(RESET) $(YELLOW)jonnathan-ls$(RESET)"; \
 		echo ;\
 	fi

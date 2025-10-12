@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/10/11 23:00:10 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/08/31 18:49:15 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef STYLE_HPP
+# define STYLE_HPP
 
-#include <iostream>
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define BOLD    "\033[1m"
+#define WHITE   "\033[37m"
+#define ORANGE  "\033[38;5;208m"
 
-class Fixed {
-public:
-	Fixed(void);
-	Fixed(int nbr);
-	Fixed(float nbr);
-	Fixed(const Fixed& other);
-	Fixed& operator=(const Fixed& other);
-	~Fixed();
-
-	int toInt(void) const;
-	int getRawBits() const;
-	float toFloat(void) const;
-
-private:
-	int rawFixedPointValue;
-	static const int fractionalBits = 8;
-};
-
-std::ostream& operator<<(std::ostream& os, Fixed const& fixed);
-
-#endif
+#endif 

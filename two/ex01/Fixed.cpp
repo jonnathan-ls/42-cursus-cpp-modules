@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/08/31 21:04:03 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/10/11 22:59:53 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int Fixed::toInt(void) const
 	return rawFixedPointValue / (1 << fractionalBits);
 }
 
-std::ostream& operator<<(std::ostream& os, Fixed const& f)
+std::ostream& operator<<(std::ostream& os, Fixed const& fixed)
 {
-	return os << f.toFloat();
+	return os << fixed.toFloat();
 }
