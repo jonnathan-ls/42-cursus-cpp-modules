@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/07/26 14:43:26 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:50:05 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "HumanB.hpp"
 #include <iostream>
 
-#define ATACK_EMOJI "⚔️  "
+#define ATACK_EMOJI "💥  "
 
 int main() {
 	std::cout << std::endl
