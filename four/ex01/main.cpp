@@ -69,10 +69,35 @@ static void test_deep_copy() {
 		<< std::endl << "📝 And destructor of both without issues." << std::endl;
 }
 
+static void test_deep_copy_in_atribution() {
+	std::cout << CYAN << BOLD
+		<< std::endl << "🧪 Test Deep Copy in Assignment Operator"
+		<< RESET << std::endl << std::endl;
+
+	Dog dog;
+	std::cout << "▶️  Original Dog ideas before assignment" << std::endl;
+	dog.makeSound();
+	std::cout << "▶️  Original Dog ideas after assignment" << std::endl;
+	Dog dogClone;
+	dogClone = dog;
+	std::cout << "▶️  Cloned Dog ideas after assignment" << std::endl;
+	dogClone.makeSound();
+	dog.sleep();
+	std::cout << "▶️  Original Dog ideas after sleep" << std::endl;
+	dog.makeSound();
+	std::cout << "▶️  Cloned Dog ideas should remain unchanged" << std::endl;
+	dogClone.makeSound();
+
+	std::cout << "📝 it is expected that dog and dogClone have different ideas."
+		<< std::endl << "📝 And that they do not share the same Brain instance."
+		<< std::endl << "📝 And destructor of both without issues." << std::endl;
+}
+
 int main()
 {
 	test_whitout_brain();
 	test_with_brain();
 	test_deep_copy();
+	test_deep_copy_in_atribution();
 	return (0);
 }
