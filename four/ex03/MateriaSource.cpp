@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/11/02 17:31:34 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/11/02 18:14:30 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 MateriaSource::~MateriaSource() {
 	for (int i = 0; i < storedQuantity; i++) {
-		delete materials[i];
+		if (materials[i]) {
+			delete materials[i];
+		}
 	}
 }
 
@@ -31,7 +33,9 @@ MateriaSource::MateriaSource(const MateriaSource &other) {
 MateriaSource &MateriaSource::operator=(const MateriaSource &other) {
 	if (this != &other) {
 		for (int i = 0; i < storedQuantity; i++) {
-			delete materials[i];
+			if (materials[i]) {
+				delete materials[i];
+			}
 		}
 		storedQuantity = other.storedQuantity;
 		for (int i = 0; i < storedQuantity; i++) {
