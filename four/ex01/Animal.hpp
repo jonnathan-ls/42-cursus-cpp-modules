@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/10/25 21:29:03 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/11/02 14:02:13 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Animal
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
 
-		virtual std::string getType() const;
 		virtual void makeSound() const;
 };
 

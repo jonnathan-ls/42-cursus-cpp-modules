@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/10/25 21:28:55 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/11/02 14:02:17 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ Animal &Animal::operator=(const Animal &other) {
 	std::cout << ORANGE << "🔒 Animal copy assignment operator called" 
 		<< RESET << std::endl;
 	return *this;
-}
-
-std::string Animal::getType() const {
-	return this->type;
 }
 
 void Animal::makeSound() const {
