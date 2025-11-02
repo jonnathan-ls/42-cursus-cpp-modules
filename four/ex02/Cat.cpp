@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/11/02 15:25:48 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:43:29 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 
 Cat::Cat() {
 	this->brain = new Brain();
-	std::cout << GREEN << "🔒 default constructor called"
+	std::cout << GREEN << "🔒 Cat default constructor called"
 		<< RESET << std::endl;
 }
 
 Cat::~Cat() {
 	delete this->brain;
-	std::cout << RED << "🔒 destructor called" << std::endl;
+	std::cout << RED << "🔒 Cat destructor called" << std::endl;
 }
 
 Cat::Cat(const Cat &other) : Animal(other) {
 	this->brain = new Brain(*other.brain);
-	std::cout << MAGENTA << "🔒 copy constructor called"
+	std::cout << MAGENTA << "🔒 Cat copy constructor called"
 		<< RESET << std::endl;
 }
 
@@ -37,7 +37,7 @@ Cat &Cat::operator=(const Cat &other) {
 		delete this->brain;
 		this->brain = new Brain(*other.brain);
 	}
-	std::cout << ORANGE << "🔒 copy assignment operator called"
+	std::cout << ORANGE << "🔒 Cat copy assignment operator called"
 		<< RESET << std::endl;
 	return *this;
 }

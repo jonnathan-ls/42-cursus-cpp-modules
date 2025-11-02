@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/11/02 15:33:56 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:34:32 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 Dog::Dog() {
 	this->brain = new Brain();
-	std::cout << GREEN << "🔒 default constructor called" << RESET << std::endl;
+	std::cout << GREEN << "🔒 Dog default constructor called" << RESET << std::endl;
 }
 
 Dog::~Dog() {
 	delete this->brain;
-	std::cout << RED << "🔒 destructor called" << RESET << std::endl;
+	std::cout << RED << "🔒 Dog destructor called" << RESET << std::endl;
 }
 
 Dog::Dog(const Dog &other) : Animal(other) {
 	this->brain = new Brain(*other.brain);
-	std::cout << MAGENTA << "🔒 copy constructor called" << RESET << std::endl;
+	std::cout << MAGENTA << "🔒 Dog copy constructor called" << RESET << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &other) {
@@ -35,7 +35,7 @@ Dog &Dog::operator=(const Dog &other) {
 		delete this->brain;
 		this->brain = new Brain(*other.brain);
 	}
-	std::cout << ORANGE << "🔒 copy assignment operator called"
+	std::cout << ORANGE << "🔒 Dog copy assignment operator called"
 		<< RESET << std::endl;
 	return *this;
 }
