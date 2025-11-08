@@ -13,12 +13,16 @@
 CC = c++
 NAME = animals
 
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp \
+	./sources/Animal.cpp ./sources/Dog.cpp ./sources/Cat.cpp \
+	./sources/WrongAnimal.cpp ./sources/WrongCat.cpp
 
 OBJDIR = objects
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+INCLUDES = -I ./includes
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 
 ESC = \033[
 RESET = $(ESC)0m

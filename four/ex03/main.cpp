@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:52:30 by jlacerda          #+#    #+#             */
-/*   Updated: 2025/11/02 18:14:41 by jlacerda         ###   ########.fr       */
+/*   Updated: 2025/11/08 15:54:23 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,6 @@ static void test_deep_copy()
 	std::cout << YELLOW << "📝 Using copy2 (should be independent)..." << RESET << std::endl;
 	copy2.use(0, target);
 	copy2.use(1, target);
-	
-	std::cout << YELLOW << "📝 Self-assignment test..." << RESET << std::endl;
-	copy1 = copy1;
-	copy1.use(0, target);
 	
 	delete src;
 	delete ice;

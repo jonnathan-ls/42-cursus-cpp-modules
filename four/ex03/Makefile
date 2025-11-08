@@ -13,12 +13,16 @@
 CC = c++
 NAME = materials
 
-SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
+SRCS = main.cpp \
+	./sources/AMateria.cpp ./sources/Ice.cpp ./sources/Cure.cpp \
+	./sources/Character.cpp ./sources/MateriaSource.cpp
 
 OBJDIR = objects
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+INCLUDES = -I ./includes
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 
 ESC = \033[
 RESET = $(ESC)0m
