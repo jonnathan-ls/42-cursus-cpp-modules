@@ -3,7 +3,7 @@ NAME = program
 
 SRCS = main.cpp ./sources/Bureaucrat.cpp ./sources/AForm.cpp \
        ./sources/ShrubberyCreationForm.cpp ./sources/RobotomyRequestForm.cpp \
-       ./sources/PresidentialPardonForm.cpp
+       ./sources/PresidentialPardonForm.cpp ./sources/Intern.cpp
 
 OBJDIR = objects
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
@@ -59,7 +59,7 @@ header:
 	@if [ ! -f .header_lock ]; then \
 		touch .header_lock; \
 		echo; \
-		echo "$(MAGENTA)$(BOLD)🔥  CPP Module 05 Exercise 02$(RESET)"; \
+		echo "$(MAGENTA)$(BOLD)🔥  CPP Module 05 Exercise 03$(RESET)"; \
 		echo "$(GREEN)$(BOLD)👥  Autor:$(RESET) $(YELLOW)jonnathan-ls$(RESET)"; \
 		echo ;\
 	fi
