@@ -3,20 +3,20 @@
 #include <cstdlib>
 #include <ctime>
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("default") {}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("default") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) 
-    : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
+    : AForm("RobotomyRequestForm", 72, 45), target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) 
-    : AForm(other), _target(other._target) {}
+    : AForm(other), target(other.target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {
     if (this != &other) {
         AForm::operator=(other);
-        this->_target = other._target;
+        this->target = other.target;
     }
     return *this;
 }
@@ -39,8 +39,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
     }
     
     if (std::rand() % 2 == 0) {
-        std::cout << "🤖 " << this->_target << " foi robotomizado com sucesso!" << std::endl;
+        std::cout << "🤖 " << this->target << " foi robotomizado com sucesso!" << std::endl;
     } else {
-        std::cout << "❌ A robotomização de " << this->_target << " falhou!" << std::endl;
+        std::cout << "❌ A robotomização de " << this->target << " falhou!" << std::endl;
     }
 }

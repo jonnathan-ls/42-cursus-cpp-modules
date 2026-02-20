@@ -2,20 +2,20 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default") {}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("default") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) 
-    : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
+    : AForm("ShrubberyCreationForm", 145, 137), target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) 
-    : AForm(other), _target(other._target) {}
+    : AForm(other), target(other.target) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
     if (this != &other) {
         AForm::operator=(other);
-        this->_target = other._target;
+        this->target = other.target;
     }
     return *this;
 }
@@ -28,7 +28,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
         throw AForm::GradeTooLowException();
     }
 
-    std::string filename = this->_target + "_shrubbery";
+    std::string filename = this->target + "_shrubbery";
     std::ofstream file(filename.c_str());
     
     if (!file.is_open()) {

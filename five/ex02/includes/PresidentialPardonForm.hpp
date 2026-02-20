@@ -5,7 +5,7 @@
 
 class PresidentialPardonForm : public AForm {
     private:
-        std::string _target;
+        std::string target;
 
     public:
         PresidentialPardonForm();

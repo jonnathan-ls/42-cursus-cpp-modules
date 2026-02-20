@@ -47,7 +47,9 @@ int main() {
         
         alice.signForm(robotomy);
         alice.executeForm(robotomy);
-        alice.executeForm(robotomy); // Tentar novamente para ver o resultado aleatório
+        alice.executeForm(robotomy);
+        alice.executeForm(robotomy);
+        
     } catch (std::exception &e) {
         std::cout << "Erro: " << e.what() << std::endl;
     }

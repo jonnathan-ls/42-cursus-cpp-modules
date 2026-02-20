@@ -25,14 +25,14 @@ const char *AForm::FormNotSignedException::what() const throw() {
     return "🚨 Form is not signed";
 }
 
-AForm::AForm(): _name("Default"), _signedForm(false), _gradeToSign(150), _gradeToExecute(150) {}
+AForm::AForm(): name("Default"), signedForm(false), gradeToSign(150), gradeToExecute(150) {}
 
 AForm::~AForm() {}
 
-AForm::AForm(const AForm &other): _name(other._name), _signedForm(other._signedForm), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute) {}
+AForm::AForm(const AForm &other): name(other.name), signedForm(other.signedForm), gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute) {}
 
 AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute) 
-    : _name(name), _signedForm(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
+    : name(name), signedForm(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute) {
     if (!isValidGrade(gradeToSign)) {
         throwGradeException(gradeToSign);
     }
@@ -43,32 +43,32 @@ AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
 
 AForm &AForm::operator=(const AForm &other) {
     if (this != &other) {
-        this->_signedForm = other._signedForm;
+        this->signedForm = other.signedForm;
     }
     return *this;
 }
 
 std::string AForm::getName() const {
-    return this->_name;
+    return this->name;
 }
 
 bool AForm::getSignedForm() const {
-    return this->_signedForm;
+    return this->signedForm;
 }
 
 int AForm::getGradeToSign() const {
-    return this->_gradeToSign;
+    return this->gradeToSign;
 }
 
 int AForm::getGradeToExecute() const {
-    return this->_gradeToExecute;
+    return this->gradeToExecute;
 }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat) {
-    if (bureaucrat.getGrade() > this->_gradeToSign) {
+    if (bureaucrat.getGrade() > this->gradeToSign) {
         throw AForm::GradeTooLowException();
     }
-    this->_signedForm = true;
+    this->signedForm = true;
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &form) {

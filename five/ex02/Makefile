@@ -1,5 +1,5 @@
 CC = c++
-NAME = bureaucrat
+NAME = program
 
 SRCS = main.cpp ./sources/Bureaucrat.cpp ./sources/AForm.cpp \
        ./sources/ShrubberyCreationForm.cpp ./sources/RobotomyRequestForm.cpp \
