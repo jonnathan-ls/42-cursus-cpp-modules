@@ -76,13 +76,10 @@ int main() {
               << (assign.getSignedForm() ? "Yes" : "No") << std::endl;
     
     std::cout << "\n" << YELLOW << "Validação:" << RESET << std::endl;
-    std::cout << "  Nome (const):        " << (assign.getName() == "Assign" ? GREEN "✓" : "✗") << RESET << std::endl;
+    std::cout << "  Name (const):        " << (assign.getName() == "Assign" ? GREEN "✓" : "✗") << RESET << std::endl;
     std::cout << "  GradeToSign (const): " << (assign.getGradeToSign() == 1 ? GREEN "✓" : "✗") << RESET << std::endl;
     std::cout << "  GradeToExec (const): " << (assign.getGradeToExecute() == 1 ? GREEN "✓" : "✗") << RESET << std::endl;
     std::cout << "  SignedForm:          " << (assign.getSignedForm() == true ? GREEN "✓" : "✗") << RESET << std::endl;
-
-    separator();
-    std::cout << BOLD << GREEN << "✨ Todos os testes concluídos!" << RESET << "\n" << std::endl;
 
     return 0;
 }

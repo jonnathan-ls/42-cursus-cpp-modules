@@ -101,8 +101,5 @@ int main() {
         std::cout << "Erro: " << e.what() << std::endl;
     }
 
-    separator();
-    std::cout << BOLD << GREEN << "✨ Todos os testes concluídos!" << RESET << "\n" << std::endl;
-
     return 0;
 }

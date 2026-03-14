@@ -16,6 +16,7 @@ Diferente do retorno de valores (como 0 ou -1), as exceções permitem "lançar"
 As exceções (`GradeTooHighException` e `GradeTooLowException`) são classes definidas dentro da classe `Bureaucrat`.
 - **Herança**: Elas herdam de `std::exception`, o que as torna compatíveis com os blocos `catch` padrão do C++.
 - **Método what()**: A sobrescrita do método `what()` permite definir uma mensagem de erro personalizada que será exibida ao capturar a exceção.
+    - O uso de `virtual` junto da classe serve para permitir o polimorfismo, e quando utilizada pela classe derivada atua como no uso do ponteiro/referência da classe base, o método chamado será o da classe derivada. [ Sem virtual, a chamada é “fixada” na versão da base (ligação estática). ]
 
 ### 3. Encapsulamento e Regras de Negócio
 O Burocrata tem um nome e uma classificação (grade). 
