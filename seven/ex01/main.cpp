@@ -16,6 +16,18 @@ void doubleInt(int &x) { x = x * 2; }
 void toUpperChar(char &c) { if (c >= 'a' && c <= 'z') c = c - 32; }
 void incrementFloat(float &x) { x = x + 0.5f; }
 
+template <typename T>
+void printValue(const T &value)
+{
+    std::cout << value << " ";
+}
+
+template <typename T>
+void printWrapped(const T &value)
+{
+    std::cout << "{" << value << "} ";
+}
+
 struct Multiplier {
     int factor;
     Multiplier(int f) : factor(f) {}
@@ -47,6 +59,7 @@ int main()
     std::cout << GREEN << "📦 INT Arrays & Modifications:" << RESET << std::endl;
     int arr1[] = {1, 2, 3, 4, 5};
     test("print", "normal", arr1, 5, printInt);
+    test("print template", "const ref", arr1, 5, printValue<int>);
     
     int arr2[] = {10};
     test("print", "single element", arr2, 1, printInt);
@@ -77,6 +90,7 @@ int main()
     std::cout << GREEN << "\n📦 STRING Arrays & String Functor:" << RESET << std::endl;
     std::string str1[] = {"Hello", "World", "C++"};
     test("print", "normal", str1, 3, printString);
+    test("print template", "const ref", str1, 3, printWrapped<std::string>);
     
     StringPrefixer add_prefix(">>> ");
     std::string str2[] = {"apple", "banana", "cherry"};
